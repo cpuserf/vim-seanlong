@@ -95,9 +95,6 @@ let g:netrw_liststyle=3
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
-" set the leader to the spacebar
-let mapleader = "\<Space>"
-
 " have this to clear previous search highlighing
 nnoremap <leader><space> :noh<cr>
 
