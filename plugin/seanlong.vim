@@ -89,11 +89,21 @@ if !exists(":DiffOrig")
 endif
 
 let g:netrw_banner=1
-let g:netrw_browse_split=4
-let g:netrw_altv=1
 let g:netrw_liststyle=3
 let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+"
+" Make tab complete more like a shell
+set wildmode=list:longest,list:full
+
+" This will show a vertical line at column x while in insert mode
+highlight ColorColumn ctermbg=5
+highlight ColorColumn guibg=DarkMagenta
+augroup ColorcolumnOnlyInInsertMode
+autocmd!
+autocmd InsertEnter * setlocal colorcolumn=120
+autocmd InsertLeave * setlocal colorcolumn=0
+augroup END
 
 " have this to clear previous search highlighing
 nnoremap <leader><space> :noh<cr>
@@ -112,19 +122,11 @@ nmap <silent> <C-j> :wincmd j<CR>
 nmap <silent> <C-k> :wincmd k<CR>
 nmap <silent> <C-l> :wincmd l<CR>
 
-" This will show a vertical line at column x while in insert mode
-highlight ColorColumn ctermbg=5
-highlight ColorColumn guibg=DarkMagenta
-augroup ColorcolumnOnlyInInsertMode
-autocmd!
-autocmd InsertEnter * setlocal colorcolumn=120
-autocmd InsertLeave * setlocal colorcolumn=0
-augroup END
-
 " Remap F1 to esc for times when miss hitting esc, can use :h for help
 inoremap <F1> <ESC>
 nnoremap <F1> <ESC>
 vnoremap <F1> <ESC>
 
-" Make tab complete more like a shell
-set wildmode=list:longest,list:full
+" Make it easy to open the vimrc for editing & sourcing
+nnoremap <Leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <Leader>sv :source $MYVIMRC<CR>
