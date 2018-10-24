@@ -79,10 +79,10 @@ highlight PreCondit ctermfg=173 guifg=#CC7833
 highlight StorageClass ctermfg=221 guifg=#ffcc66
 
 "Spelling
-highlight SpellBad cterm=undercurl ctermfg=160 gui=undercurl guifg=#D70000
-highlight SpellCap cterm=underline ctermfg=189 gui=underline guifg=#D0D0FF
-highlight SpellLocal cterm=undercurl gui=undercurl
-highlight SpellRare cterm=underline ctermfg=168 gui=underline guifg=#D75F87
+highlight SpellBad cterm=underline ctermfg=189 ctermbg=9 gui=undercurl guifg=#D70000
+highlight SpellCap cterm=underline ctermfg=189 ctermbg=12 gui=underline guifg=#D0D0FF
+highlight SpellLocal cterm=underline ctermfg=168 ctermbg=14 gui=undercurl guifg=Cyan
+highlight SpellRare cterm=underline ctermfg=189 ctermbg=13 gui=underline guifg=#D75F87
 
 " Other
 highlight Directory ctermfg=51 guifg=Cyan
