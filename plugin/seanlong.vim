@@ -54,7 +54,7 @@ if has('mac')
 
 elseif has('win32') || has('win64')
 
-    set gfn=Liberation_Mono:h10
+    set gfn=Liberation\ Mono:h10
 
     " store all the .swp files in one place
     set dir=~/vimfiles/swap
