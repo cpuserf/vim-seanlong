@@ -6,6 +6,7 @@ filetype plugin indent on
 
 " use 256 terminal colors for full glory
 set t_Co=256
+set termguicolors
 " use custom color scheme
 color seanlong
 
