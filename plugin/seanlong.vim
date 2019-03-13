@@ -6,7 +6,6 @@ filetype plugin indent on
 
 " use 256 terminal colors for full glory
 set t_Co=256
-set termguicolors
 " use custom color scheme
 color seanlong
 
@@ -65,6 +64,9 @@ elseif has('win32') || has('win64')
     set tags=./tags,tags,~/vimfiles/tags
 
 elseif has('unix')
+
+    " this turns on 24bit color for terminal, does not work on Mac
+    set termguicolors
 
     set gfn=Liberation\ Mono\ 11
 
