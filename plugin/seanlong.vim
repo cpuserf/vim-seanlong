@@ -60,24 +60,24 @@ endif
 " Set system specific paths
 if has('unix')
     if has('nvim')
-        let s:data_dir = "~/.local/share/nvim"
+        let s:data_dir = "$HOME/.local/share/nvim"
     else
-        let s:data_dir = "~/.vim"
+        let s:data_dir = "$HOME/.vim"
     endif
 elseif has('win32') || has('win64')
     if has('nvim')
-        let s:data_dir = "~/AppData/Local/share/nvim"
+        let s:data_dir = "%HOMEPATH%/AppData/Local/share/nvim"
     else
-        let s:data_dir = "~/vimfiles"
+        let s:data_dir = "%HOMEPATH%/vimfiles"
     endif
 endif
 
 " store all the .swp files in one place
 let s:swap_dir = s:data_dir . "/swap"
-let &dir=s:swap_dir 
+let dir=s:swap_dir
 " set locations where to find tags
 let s:tag_dirs = "./tags,tags," . s:data_dir . "/tags"
-let &tags=s:tag_dirs
+let tags=s:tag_dirs
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
