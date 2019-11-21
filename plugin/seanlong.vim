@@ -1,4 +1,4 @@
-" My standard vim configuration
+" My standard nvim/vim configuration
 
 set nocompatible
 set modeline
@@ -40,44 +40,44 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
 endif
 
-" Set system spacific settings
+" Set system specific font/color enables
 if has('mac')
 
     set gfn=Liberation\ Mono:h13
-
-    " store all the .swp files in one place
-    set dir=~/.vim/swap
-
-    " set where to find tags
-    " dir of current file, current dir, home/.vim/tags
-    set tags=./tags,tags,~/.vim/tags
 
 elseif has('win32') || has('win64')
 
     set gfn=Liberation\ Mono:h10
 
-    " store all the .swp files in one place
-    set dir=~/vimfiles/swap
-
-    " set where to find tags
-    " dir of current file, current dir, home/vimfiles/tags
-    set tags=./tags,tags,~/vimfiles/tags
-
 elseif has('unix')
 
     " this turns on 24bit color for terminal, does not work on Mac
     set termguicolors
-
     set gfn=Liberation\ Mono\ 11
 
-    " store all the .swp files in one place
-    set dir=~/.vim/swap
-
-    " set where to find tags
-    " dir of current file, current dir, home/.vim/tags
-    set tags=./tags,tags,~/.vim/tags
-
 endif
+
+" Set system specific paths
+if has('unix')
+    if has('nvim')
+        let s:data_dir = "~/.local/share/nvim"
+    else
+        let s:data_dir = "~/.vim"
+    endif
+elseif has('win32') || has('win64')
+    if has('nvim')
+        let s:data_dir = "~/AppData/Local/share/nvim"
+    else
+        let s:data_dir = "~/vimfiles"
+    endif
+endif
+
+" store all the .swp files in one place
+let s:swap_dir = s:data_dir . "/swap"
+let &dir=s:swap_dir 
+" set locations where to find tags
+let s:tag_dirs = "./tags,tags," . s:data_dir . "/tags"
+let &tags=s:tag_dirs
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
