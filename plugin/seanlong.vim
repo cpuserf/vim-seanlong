@@ -59,25 +59,30 @@ endif
 
 " Set system specific paths
 if has('unix')
-    if has('nvim')
-        let s:data_dir = "$HOME/.local/share/nvim"
-    else
-        let s:data_dir = "$HOME/.vim"
-    endif
+    let s:cache_dir = "$HOME/.cache/vim"
 elseif has('win32') || has('win64')
     if has('nvim')
-        let s:data_dir = "%HOMEPATH%/AppData/Local/share/nvim"
+        let s:cache_dir = "%HOMEPATH%/AppData/Local/share/nvim"
     else
-        let s:data_dir = "%HOMEPATH%/vimfiles"
+        let s:cache_dir = "%HOMEPATH%/vimfiles"
     endif
 endif
 
 " store all the .swp files in one place
-let s:swap_dir = s:data_dir . "/swap"
-let dir=s:swap_dir
+let s:swap_dir = s:cache_dir . "/swap"
+execute "set dir=" . s:swap_dir
+
+" store all the backup files in one place
+let s:backup_dir = s:cache_dir . "/bkup"
+execute "set bdir=" . s:backup_dir
+
+" store all the undo files in one place
+let s:undo_dir = s:cache_dir . "/undo"
+execute "set udir=" . s:undo_dir
+
 " set locations where to find tags
-let s:tag_dirs = "./tags,tags," . s:data_dir . "/tags"
-let tags=s:tag_dirs
+let s:tag_dirs = "./tags,tags," . s:cache_dir . "/tags"
+execute "set tags=" . s:tag_dirs
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
