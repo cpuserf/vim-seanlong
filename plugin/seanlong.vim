@@ -1,4 +1,4 @@
-" My standard nvim/vim configuration
+" My standard vim configuration
 
 set nocompatible
 set modeline
@@ -67,22 +67,33 @@ elseif has('win32') || has('win64')
         let s:cache_dir = "%HOMEPATH%/vimfiles"
     endif
 endif
+let s:cache_dir = expand(s:cache_dir)
 
 " store all the .swp files in one place
 let s:swap_dir = s:cache_dir . "/swap"
+if !isdirectory(s:swap_dir)
+    call mkdir(s:swap_dir, 'p')
+endif
 execute "set dir=" . s:swap_dir
 
 " store all the backup files in one place
 let s:backup_dir = s:cache_dir . "/bkup"
+if !isdirectory(s:backup_dir)
+    call mkdir(s:backup_dir, 'p')
+endif
 execute "set bdir=" . s:backup_dir
 
 " store all the undo files in one place
 let s:undo_dir = s:cache_dir . "/undo"
+if !isdirectory(s:undo_dir)
+    call mkdir(s:undo_dir, 'p')
+endif
 execute "set udir=" . s:undo_dir
 
 " set locations where to find tags
 let s:tag_dirs = "./tags,tags," . s:cache_dir . "/tags"
 execute "set tags=" . s:tag_dirs
+
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
