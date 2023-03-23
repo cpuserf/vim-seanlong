@@ -53,7 +53,13 @@ elseif has('unix')
 
     " this turns on 24bit color for terminal, does not work on Mac
     set termguicolors
-    set gfn=Liberation\ Mono\ 11
+
+    if has('nvim')
+        " nvim uses the same config style as Mac and Windows
+        set gfn=Liberation\ Mono:h11
+    else
+        set gfn=Liberation\ Mono\ 11
+    endif
 
 endif
 
